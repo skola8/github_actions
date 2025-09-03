@@ -1,0 +1,25 @@
+name: Sample Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Message from Spring Boot"
+        required: true
+      envName:
+        description: "Environment name"
+        required: true
+      version:
+        description: "App version"
+        required: false
+        default: "1.0.0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print values
+        run: |
+          echo "Message: ${{ github.event.inputs.message }}"
+          echo "Environment: ${{ github.event.inputs.envName }}"
+          echo "Version: ${{ github.event.inputs.version }}"
